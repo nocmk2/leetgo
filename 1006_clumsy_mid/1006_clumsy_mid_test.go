@@ -19,6 +19,7 @@ func Test1006(t *testing.T) {
 		got := clumsy(c.in)
 		if got != c.want {
 			t.Errorf("clumsy(%v)==%v, want %v", c.in, got, c.want)
+			t.Fatalf("clumsy(%v)==%v, want %v", c.in, got, c.want)
 		}
 
 	}

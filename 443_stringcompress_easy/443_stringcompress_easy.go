@@ -21,21 +21,21 @@ func compress(chars []byte) int {
 	return t
 }
 
-//func compress(chars []byte) int {
-//	k := 0
-//	for i, j := 0, 0; i < len(chars); i = j {
-//		for j < len(chars) && chars[i] == chars[j] {
-//			j++
-//		}
-//		chars[k] = chars[i]
-//		k++
-//		if j-i == 1 {
-//			continue
-//		}
-//		for _, c := range []byte(strconv.Itoa(j - i)) {
-//			chars[k] = c
-//			k++
-//		}
-//	}
-//	return k
-//}
+func compress1(chars []byte) int {
+	write := 0
+	for slow, fast := 0, 0; slow < len(chars); slow = fast {
+		for fast != len(chars) && chars[slow] == chars[fast] {
+			fast++
+		}
+		chars[write] = chars[slow]
+		write++
+		if fast-slow == 1 {
+			continue
+		}
+		for _, c := range []byte(strconv.Itoa(fast - slow)) {
+			chars[write] = c
+			write++
+		}
+	}
+	return write
+}

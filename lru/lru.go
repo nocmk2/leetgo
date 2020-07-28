@@ -1,7 +1,14 @@
 package leetgo
 
+/*LinkNode for Doubly Linked List*/
+type LinkNode struct {
+	key, value int
+	prev, next *LinkNode
+}
+
 /*LRUCache implements lru */
 type LRUCache struct {
+	m map[int]*LinkNode
 }
 
 /*Constructor new */
